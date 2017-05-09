@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import auction.domain.User;
+import auction.Models.User;
 
 public class RegistrationMgrTest {
 

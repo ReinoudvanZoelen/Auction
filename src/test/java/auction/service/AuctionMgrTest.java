@@ -7,10 +7,10 @@ import nl.fontys.util.Money;
 import org.junit.Before;
 import org.junit.Test;
 
-import auction.domain.Bid;
-import auction.domain.Category;
-import auction.domain.Item;
-import auction.domain.User;
+import auction.Models.Bid;
+import auction.Models.Category;
+import auction.Models.Item;
+import auction.Models.User;
 import java.util.ArrayList;
 
 public class AuctionMgrTest {

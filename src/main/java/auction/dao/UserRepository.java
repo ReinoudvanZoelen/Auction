@@ -1,9 +1,9 @@
 package auction.dao;
 
-import auction.domain.User;
+import auction.Models.User;
 import java.util.List;
 
-public interface UserDAO {
+public interface UserRepository {
 
     /**
      *

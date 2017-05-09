@@ -1,16 +1,16 @@
 package auction.service;
 
 import java.util.*;
-import auction.domain.User;
-import auction.dao.UserDAOCollectionImpl;
-import auction.dao.UserDAO;
+import auction.Models.User;
+import auction.dao.UserRepositoryCollectionImpl;
+import auction.dao.UserRepository;
 
 public class RegistrationMgr {
 
-    private UserDAO userDAO;
+    private UserRepository userRepository;
 
     public RegistrationMgr() {
-        userDAO = new UserDAOCollectionImpl();
+        userRepository = new UserRepositoryCollectionImpl();
     }
 
     /**
@@ -25,12 +25,12 @@ public class RegistrationMgr {
         if (!email.contains("@")) {
             return null;
         }
-        User user = userDAO.findByEmail(email);
+        User user = userRepository.findByEmail(email);
         if (user != null) {
             return user;
         }
         user = new User(email);
-        userDAO.create(user);
+        userRepository.create(user);
         return user;
     }
 
@@ -41,13 +41,13 @@ public class RegistrationMgr {
      * e-mailadres of null als zo'n User niet bestaat.
      */
     public User getUser(String email) {
-        return userDAO.findByEmail(email);
+        return userRepository.findByEmail(email);
     }
 
     /**
      * @return Een iterator over alle geregistreerde gebruikers
      */
     public List<User> getUsers() {
-        return userDAO.findAll();
+        return userRepository.findAll();
     }
 }

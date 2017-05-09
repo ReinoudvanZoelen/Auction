@@ -1,9 +1,9 @@
 package auction.dao;
 
-import auction.domain.Item;
+import auction.Models.Item;
 import java.util.List;
 
-public interface ItemDAO {
+public interface ItemRepository {
 
     /**
      *

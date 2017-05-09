@@ -1,4 +1,4 @@
-package auction.domain;
+package auction.Models;
 
 import nl.fontys.util.FontysTime;
 import nl.fontys.util.Money;

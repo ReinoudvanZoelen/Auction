@@ -1,8 +1,8 @@
 package auction.service;
 
-import auction.domain.Category;
-import auction.domain.Item;
-import auction.domain.User;
+import auction.Models.Category;
+import auction.Models.Item;
+import auction.Models.User;
 
 public class SellerMgr {
 

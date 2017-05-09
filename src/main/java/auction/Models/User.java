@@ -1,4 +1,4 @@
-package auction.domain;
+package auction.Models;
 
 public class User {
 
