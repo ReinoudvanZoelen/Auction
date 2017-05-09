@@ -14,7 +14,7 @@
         <shared-cache-mode>NONE</shared-cache-mode>
         <properties>
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:mysql://84.24.62.136:3306/bank?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
+                      value="jdbc:mysql://84.24.62.136:3306/auction?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
             <property name="javax.persistence.jdbc.user" value="RMTS"/>
             <property name="javax.persistence.jdbc.password" value="Habibke"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
