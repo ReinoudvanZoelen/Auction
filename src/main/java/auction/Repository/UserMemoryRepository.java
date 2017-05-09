@@ -1,4 +1,4 @@
-package auction.dao;
+package auction.Repository;
 
 import auction.Models.User;
 import java.util.ArrayList;
@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import javax.persistence.EntityExistsException;
 
-public class UserRepositoryCollectionImpl implements UserRepository {
+public class UserMemoryRepository implements UserRepository {
 
     private HashMap<String, User> users;
 
-    public UserRepositoryCollectionImpl() {
+    public UserMemoryRepository() {
         users = new HashMap<String, User>();
     }
 

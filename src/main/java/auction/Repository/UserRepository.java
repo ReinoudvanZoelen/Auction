@@ -1,4 +1,4 @@
-package auction.dao;
+package auction.Repository;
 
 import auction.Models.User;
 import java.util.List;

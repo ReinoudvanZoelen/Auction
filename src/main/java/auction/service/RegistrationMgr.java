@@ -2,15 +2,22 @@ package auction.service;
 
 import java.util.*;
 import auction.Models.User;
-import auction.dao.UserRepositoryCollectionImpl;
-import auction.dao.UserRepository;
+import auction.Repository.UserJPARepository;
+import auction.Repository.UserMemoryRepository;
+import auction.Repository.UserRepository;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class RegistrationMgr {
 
     private UserRepository userRepository;
 
+    public EntityManager entityManager = Persistence.createEntityManagerFactory("auctionPU").createEntityManager();
+
     public RegistrationMgr() {
-        userRepository = new UserRepositoryCollectionImpl();
+        userRepository = new UserJPARepository(this.entityManager);
     }
 
     /**
