@@ -1,32 +1,45 @@
 package auction.service;
 
-import nl.fontys.util.Money;
 import auction.Models.Bid;
 import auction.Models.Item;
 import auction.Models.User;
+import auction.Repository.BidJPARepository;
+import auction.Repository.ItemJPARepository;
+import nl.fontys.util.Money;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class AuctionMgr  {
+public class AuctionMgr {
 
-   /**
+    private ItemJPARepository ItemRepository = new ItemJPARepository();
+    private BidJPARepository BidRepository = new BidJPARepository();
+
+    /**
      * @param id
      * @return het item met deze id; als dit item niet bekend is wordt er null
-     *         geretourneerd
+     * geretourneerd
      */
     public Item getItem(Long id) {
-        // TODO
-        return null;
+        Item item = this.ItemRepository.find(id);
+        if (item != null) {
+            return item;
+        } else {
+            return null;
+        }
     }
 
-  
-   /**
+
+    /**
      * @param description
      * @return een lijst met items met @desciption. Eventueel lege lijst.
      */
     public List<Item> findItemByDescription(String description) {
-        // TODO
-        return new ArrayList<Item>();
+        List<Item> items = ItemRepository.findByDescription(description);
+        if (items == null) {
+            items = new ArrayList<Item>();
+        }
+        return items;
     }
 
     /**
@@ -34,10 +47,13 @@ public class AuctionMgr  {
      * @param buyer
      * @param amount
      * @return het nieuwe bod ter hoogte van amount op item door buyer, tenzij
-     *         amount niet hoger was dan het laatste bod, dan null
+     * amount niet hoger was dan het laatste bod, dan null
      */
     public Bid newBid(Item item, User buyer, Money amount) {
-        // TODO 
-        return null;
+        Bid bid = item.newBid(buyer, amount);
+
+        if (bid != null) { item.setHighest(bid); }
+
+        return item.getHighestBid();
     }
 }
