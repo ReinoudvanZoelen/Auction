@@ -6,7 +6,12 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
         <!--Models-->
+        <class>auction.Models.Bid</class>
+        <class>auction.Models.Category</class>
+        <class>auction.Models.Item</class>
         <class>auction.Models.User</class>
+        <class>nl.fontys.util.FontysTime</class>
+        <class>nl.fontys.util.Money</class>
 
         <shared-cache-mode>NONE</shared-cache-mode>
         <properties>

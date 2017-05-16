@@ -1,16 +1,25 @@
 package nl.fontys.util;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 
+@Entity
 public class Money implements Serializable, Comparable {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     public static final String EURO = "\u20AC";
     private static final long serialVersionUID = 1L;
     private String currency;
     private long cents;
 
-    private Money() {
+    public Money() {
         currency = "undefined";
     }
 
@@ -100,5 +109,29 @@ public class Money implements Serializable, Comparable {
         if (this.cents == m.cents) return 0;
         else if (this.cents < m.cents) return -1;
         else return +1;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public static String getEURO() {
+        return EURO;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public void setCents(long cents) {
+        this.cents = cents;
     }
 }

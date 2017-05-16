@@ -1,9 +1,17 @@
 package nl.fontys.util;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.sql.Time;
 import java.util.TimeZone;
 
+@Entity
 public class FontysTime {
+
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 	private long seconds;
 
 	public FontysTime() {
