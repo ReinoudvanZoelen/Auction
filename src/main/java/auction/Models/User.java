@@ -1,6 +1,7 @@
 package auction.Models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @NamedQueries({
         @NamedQuery(name = "User.count",
@@ -12,6 +13,8 @@ import javax.persistence.*;
 @Entity
 public class User {
 
+    @OneToMany(targetEntity = Item.class)
+    Set<Item> offeredItems;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -22,11 +25,23 @@ public class User {
 
     public User(String email) {
         this.email = email;
-
     }
 
+    public void addItem(Item item) {
+        if (item != null) {
+            offeredItems.add(item);
+        }
+    }
 
     // Getters and Setters
+    public Set<Item> getOfferedItems() {
+        return offeredItems;
+    }
+
+    public int numberOfOfferedItems() {
+        return offeredItems.size();
+    }
+
     public long getId() {
         return id;
     }
