@@ -54,13 +54,6 @@ public class SellerMgrTest {
         assertNotNull(item1.getId());
     }
 
-    @Test
-    public void createtest(){
-        ItemJPARepository jpa = new ItemJPARepository(Persistence.createEntityManagerFactory("auctionPU").createEntityManager());
-        User user = this.registrationMgr.registerUser("test@sad.com");
-        jpa.create(new Item(user, new Category("categorie"), "omschrijving"));
-    }
-
     /**
      * Test of revokeItem method, of class SellerMgr.
      */
@@ -88,10 +81,6 @@ public class SellerMgrTest {
         assertFalse(res2);
         int count2 = auctionMgr.findItemByDescription(omsch2).size();
         assertEquals(1, count2);
-        
-        
-        
-        
     }
 
 }

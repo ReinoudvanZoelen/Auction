@@ -36,7 +36,10 @@ public class SellerMgr {
      *         false als er al geboden was op het item.
      */
     public boolean revokeItem(Item item) {
-        // TODO 
+        if(item.getHighestBid() == null){
+            this.ItemRepository.remove(item);
+            return true;
+        }
         return false;
     }
 }
