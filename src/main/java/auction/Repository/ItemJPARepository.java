@@ -11,6 +11,10 @@ public class ItemJPARepository implements ItemRepository {
 
     private EntityManager entityManager;
 
+    public ItemJPARepository(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
     @Override
     public int count() {
         Query q = entityManager.createNamedQuery("Item.count", Item.class);
@@ -65,7 +69,7 @@ public class ItemJPARepository implements ItemRepository {
         Query q = entityManager.createNamedQuery("Item.FindByDescription", Item.class).setParameter("inputdescription", description);
 
         try {
-            return (List<Item>) q.getResultList();
+            return q.getResultList();
         } catch (Exception ex) {
             System.out.println("A result has not been found for description " + description);
             return null;

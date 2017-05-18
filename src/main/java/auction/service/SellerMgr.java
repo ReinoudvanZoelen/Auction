@@ -3,8 +3,19 @@ package auction.service;
 import auction.Models.Category;
 import auction.Models.Item;
 import auction.Models.User;
+import auction.Repository.ItemJPARepository;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 
 public class SellerMgr {
+
+    public EntityManager entityManager = Persistence.createEntityManagerFactory("auctionPU").createEntityManager();
+    private ItemJPARepository ItemRepository;
+
+    public SellerMgr() {
+        this.ItemRepository = new ItemJPARepository(this.entityManager);
+    }
 
     /**
      * @param seller
@@ -14,8 +25,9 @@ public class SellerMgr {
      *         en met de beschrijving description
      */
     public Item offerItem(User seller, Category cat, String description) {
-        // TODO 
-        return null;
+        Item item = new Item(seller, cat, description);
+        this.ItemRepository.create(item);
+        return item;
     }
     
      /**

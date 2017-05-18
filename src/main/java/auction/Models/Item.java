@@ -21,7 +21,7 @@ public class Item implements Comparable {
     private Long id;
     @OneToOne(targetEntity = User.class)
     private User seller;
-    @ManyToOne(targetEntity = Category.class)
+    @ManyToOne(targetEntity = Category.class, cascade = CascadeType.PERSIST)
     private Category category;
     private String description;
     @OneToOne(targetEntity = Bid.class)
@@ -73,7 +73,12 @@ public class Item implements Comparable {
     }
 
     public Bid newBid(User buyer, Money amount) {
-        if (highest != null || highest.getAmount().compareTo(amount) >= 0) {
+        if(highest == null){
+            highest = new Bid(buyer, amount);
+            buyer.addItem(this);
+            return highest;
+        }
+        if (highest.getAmount().compareTo(amount) >= 0) {
             return null;
         }
         highest = new Bid(buyer, amount);

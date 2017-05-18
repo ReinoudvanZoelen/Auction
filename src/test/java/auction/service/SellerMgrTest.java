@@ -2,8 +2,10 @@ package auction.service;
 
 import static org.junit.Assert.*;
 
+import auction.Repository.ItemJPARepository;
 import nl.fontys.util.Money;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,6 +14,9 @@ import org.junit.Test;
 import auction.Models.Category;
 import auction.Models.Item;
 import auction.Models.User;
+import util.DatabaseCleaner;
+
+import javax.persistence.Persistence;
 
 public class SellerMgrTest {
 
@@ -26,6 +31,15 @@ public class SellerMgrTest {
         sellerMgr = new SellerMgr();
     }
 
+    @After
+    public void CleanDatabase() {
+        try {
+            new DatabaseCleaner(sellerMgr.entityManager).clean();
+        } catch (Exception exc) {
+            System.out.println("The database was not cleaned. Error: " + exc);
+        }
+    }
+
     /**
      * Test of offerItem method, of class SellerMgr.
      */
@@ -38,6 +52,13 @@ public class SellerMgrTest {
         Item item1 = sellerMgr.offerItem(user1, cat, omsch);
         assertEquals(omsch, item1.getDescription());
         assertNotNull(item1.getId());
+    }
+
+    @Test
+    public void createtest(){
+        ItemJPARepository jpa = new ItemJPARepository(Persistence.createEntityManagerFactory("auctionPU").createEntityManager());
+        User user = this.registrationMgr.registerUser("test@sad.com");
+        jpa.create(new Item(user, new Category("categorie"), "omschrijving"));
     }
 
     /**

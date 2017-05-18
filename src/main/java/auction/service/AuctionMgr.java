@@ -7,12 +7,16 @@ import auction.Repository.BidJPARepository;
 import auction.Repository.ItemJPARepository;
 import nl.fontys.util.Money;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AuctionMgr {
 
-    private ItemJPARepository ItemRepository = new ItemJPARepository();
+    public EntityManager entityManager = Persistence.createEntityManagerFactory("auctionPU").createEntityManager();
+
+    private ItemJPARepository ItemRepository = new ItemJPARepository(this.entityManager);
     private BidJPARepository BidRepository = new BidJPARepository();
 
     /**
@@ -37,7 +41,7 @@ public class AuctionMgr {
     public List<Item> findItemByDescription(String description) {
         List<Item> items = ItemRepository.findByDescription(description);
         if (items == null) {
-            items = new ArrayList<Item>();
+            items = new ArrayList<>();
         }
         return items;
     }
@@ -52,8 +56,11 @@ public class AuctionMgr {
     public Bid newBid(Item item, User buyer, Money amount) {
         Bid bid = item.newBid(buyer, amount);
 
-        if (bid != null) { item.setHighest(bid); }
+        if (bid != null) {
+            item.setHighest(bid);
+            return item.getHighestBid();
+        }
 
-        return item.getHighestBid();
+        return null;
     }
 }
