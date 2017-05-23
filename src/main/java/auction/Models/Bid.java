@@ -1,5 +1,7 @@
 package auction.Models;
 
+import com.sun.istack.internal.NotNull;
+import javafx.beans.DefaultProperty;
 import nl.fontys.util.FontysTime;
 import nl.fontys.util.Money;
 
@@ -8,7 +10,8 @@ import javax.persistence.*;
 @Entity
 public class Bid {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @OneToOne(targetEntity = FontysTime.class)
     private FontysTime time;
@@ -16,6 +19,9 @@ public class Bid {
     private User buyer;
     @OneToOne(targetEntity = Money.class)
     private Money amount;
+    @OneToOne(targetEntity = Item.class)
+    @NotNull
+    private Item item;
 
     public Bid() {
     }
@@ -29,14 +35,32 @@ public class Bid {
         return time;
     }
 
+    public void setTime(FontysTime time) {
+        this.time = time;
+    }
+
     public User getBuyer() {
         return buyer;
+    }
+
+    public void setBuyer(User buyer) {
+        this.buyer = buyer;
     }
 
     public Money getAmount() {
         return amount;
     }
 
+    public void setAmount(Money amount) {
+        this.amount = amount;
+    }
+
+    public Item getItem() { return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
 
     public long getId() {
         return id;
@@ -44,17 +68,5 @@ public class Bid {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public void setTime(FontysTime time) {
-        this.time = time;
-    }
-
-    public void setBuyer(User buyer) {
-        this.buyer = buyer;
-    }
-
-    public void setAmount(Money amount) {
-        this.amount = amount;
     }
 }
