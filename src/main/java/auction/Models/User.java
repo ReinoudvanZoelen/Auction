@@ -64,6 +64,10 @@ public class User {
         return email;
     }
 
+    public int numberOfOfferdItems(){
+        return this.offeredItems.size();
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
