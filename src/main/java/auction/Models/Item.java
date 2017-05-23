@@ -53,6 +53,8 @@ public class Item implements Comparable {
         return highest;
     }
 
+
+
     public int compareTo(Object arg0) {
         return -1;
     }
