@@ -1,6 +1,12 @@
 package util;
 
+import auction.Models.Bid;
+import auction.Models.Category;
+import auction.Models.Item;
 import auction.Models.User;
+import nl.fontys.util.FontysTime;
+import nl.fontys.util.Money;
+
 import java.sql.SQLException;
 import javax.persistence.EntityManager;
 import javax.persistence.metamodel.EntityType;
@@ -8,7 +14,7 @@ import javax.persistence.metamodel.EntityType;
 public class DatabaseCleaner {
 
     private static final Class<?>[] ENTITY_TYPES = {
-        User.class
+            FontysTime.class, Money.class, Item.class, Bid.class, Category.class, User.class
     };
     private final EntityManager em;
 
