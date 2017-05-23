@@ -1,6 +1,7 @@
 package auction.Models;
 
 import javax.persistence.*;
+import java.util.Iterator;
 import java.util.Set;
 
 @NamedQueries({
@@ -34,8 +35,17 @@ public class User {
     }
 
     // Getters and Setters
-    public Set<Item> getOfferedItems() {
-        return offeredItems;
+    public Item getOfferedItem(int id) {
+        for (Item item : this.offeredItems) {
+            if (item.getId().equals(id)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public Iterator<Item> getOfferedItems() {
+        return offeredItems.iterator();
     }
 
     public int numberOfOfferedItems() {
