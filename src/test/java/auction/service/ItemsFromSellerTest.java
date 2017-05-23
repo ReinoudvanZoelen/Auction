@@ -1,14 +1,17 @@
 package auction.service;
 
-import org.junit.Ignore;
-import javax.persistence.*;
-import util.DatabaseCleaner;
 import auction.Models.Category;
 import auction.Models.Item;
 import auction.Models.User;
-import java.util.Iterator;
 import org.junit.Before;
 import org.junit.Test;
+import util.DatabaseCleaner;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import java.util.Iterator;
+
 import static org.junit.Assert.*;
 
 public class ItemsFromSellerTest {
@@ -31,13 +34,7 @@ public class ItemsFromSellerTest {
     }
 
     @Test
-    public void dbCleaner() throws Exception{
-
-    }
-
-
-    @Test
- //   @Ignore
+    //   @Ignore
     public void numberOfOfferdItems() {
 
         String email = "ifu1@nl";
@@ -76,7 +73,7 @@ public class ItemsFromSellerTest {
 
         User userWithItem = item2.getSeller();
         assertEquals(2, userWithItem.numberOfOfferedItems());
-//        assertEquals(3, userWithItem.numberOfOfferedItems()); false
+        //assertEquals(3, userWithItem.numberOfOfferedItems()); false
         /*
          *  expected: which one of te above two assertions do you expect to be true?
          *  QUESTION:
@@ -85,8 +82,7 @@ public class ItemsFromSellerTest {
          *    1 + 1 is altijd 2 en nooit 3.
          */
 
-
-//        assertNotSame(user3, userWithItem); false
+        // assertNotSame(user3, userWithItem); false
         assertEquals(user3, userWithItem);
 
     }
@@ -114,8 +110,8 @@ public class ItemsFromSellerTest {
         assertFalse(it11.hasNext());
 
         // Explain difference in above two tests for te iterator of 'same' user
-
-
+        // Er is maar 1 item. De eerste wordt opgehaald en heeft een next (true)
+        // De tweede is het laatste item en heeft dus geen next (false)
 
         User user20 = registrationMgr.getUser(email);
         Item item20 = sellerMgr.offerItem(user20, cat, omsch2);
@@ -123,7 +119,6 @@ public class ItemsFromSellerTest {
         assertTrue(it20.hasNext());
         it20.next();
         assertTrue(it20.hasNext());
-
 
         User user30 = item20.getSeller();
         Iterator<Item> it30 = user30.getOfferedItems();
