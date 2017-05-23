@@ -59,6 +59,7 @@ public class ItemsFromSellerTest {
          *  expected: which one of te above two assertions do you expect to be true?
          *  QUESTION:
          *    Explain the result in terms of entity manager and persistance context.
+         *    bij user1 is er 1 item toegevoegd aan de lijst.
          */
 
 
@@ -80,6 +81,8 @@ public class ItemsFromSellerTest {
          *  expected: which one of te above two assertions do you expect to be true?
          *  QUESTION:
          *    Explain the result in terms of entity manager and persistance context.
+         *
+         *    1 + 1 is altijd 2 en nooit 3.
          */
 
 
