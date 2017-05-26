@@ -1,8 +1,6 @@
 package auction.service;
 
-import auction.Models.Category;
-import auction.Models.Item;
-import auction.Models.User;
+import auction.Models.*;
 import auction.Repository.ItemJPARepository;
 
 import javax.persistence.EntityManager;
@@ -43,6 +41,16 @@ public class SellerMgr {
         return false;
     }
 
-    public Item offerFurniture(User u1, Category cat, String broodkast, String ijzer) {
+    public Item offerFurniture(User u1, Category cat, String description, String material) {
+        Furniture furniture = new Furniture(u1, cat, description, material);
+        this.ItemRepository.create(furniture);
+        return furniture;
+    }
+
+
+    public Item offerPainting(User u1, Category cat, String omsch, String title, String painter) {
+        Painting painting = new Painting(u1, cat, omsch, title, painter);
+        this.ItemRepository.create(painting);
+        return painting;
     }
 }
