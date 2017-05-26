@@ -42,4 +42,7 @@ public class SellerMgr {
         }
         return false;
     }
+
+    public Item offerFurniture(User u1, Category cat, String broodkast, String ijzer) {
+    }
 }
