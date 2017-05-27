@@ -1,22 +1,15 @@
 package auction.service;
 
-import static org.junit.Assert.*;
-
-import auction.Repository.ItemJPARepository;
-import nl.fontys.util.Money;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-
-
 import auction.Models.Category;
 import auction.Models.Item;
 import auction.Models.User;
+import nl.fontys.util.Money;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import util.DatabaseCleaner;
 
-import javax.persistence.Persistence;
+import static org.junit.Assert.*;
 
 public class SellerMgrTest {
 
@@ -61,20 +54,20 @@ public class SellerMgrTest {
     public void testRevokeItem() {
         String omsch = "omsch";
         String omsch2 = "omsch2";
-        
-    
+
+
         User seller = registrationMgr.registerUser("sel@nl");
         User buyer = registrationMgr.registerUser("buy@nl");
         Category cat = new Category("cat1");
-        
-            // revoke before bidding
+
+        // revoke before bidding
         Item item1 = sellerMgr.offerItem(seller, cat, omsch);
         boolean res = sellerMgr.revokeItem(item1);
         assertTrue(res);
         int count = auctionMgr.findItemByDescription(omsch).size();
         assertEquals(0, count);
-        
-            // revoke after bid has been made
+
+        // revoke after bid has been made
         Item item2 = sellerMgr.offerItem(seller, cat, omsch2);
         auctionMgr.newBid(item2, buyer, new Money(100, "Euro"));
         boolean res2 = sellerMgr.revokeItem(item2);

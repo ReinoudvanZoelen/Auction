@@ -1,14 +1,16 @@
 package auction.service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import util.DatabaseCleaner;
 import auction.Models.*;
-import java.util.Iterator;
 import nl.fontys.util.Money;
 import org.junit.Before;
 import org.junit.Test;
+import util.DatabaseCleaner;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import java.util.Iterator;
+
 import static org.junit.Assert.*;
 
 public class FurnitureAndPaintingTest {
@@ -44,7 +46,7 @@ public class FurnitureAndPaintingTest {
         User foundUser = registrationMgr.getUser(iemand1);
         Iterator<Item> it = foundUser.getOfferedItems();
         Item firstItem = it.next();
-   //        int xxx = 22;
+        //        int xxx = 22;
         assertEquals("item added in offeredItems", furniture1, firstItem);
         Item item2 = sellerMgr.offerPainting(u1, cat, omsch, "Nachtwacht", "Rembrandt");
         it = registrationMgr.getUser(iemand1).getOfferedItems();

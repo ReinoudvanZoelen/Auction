@@ -1,20 +1,19 @@
 package auction.service;
 
-import static org.junit.Assert.*;
-
-import nl.fontys.util.Money;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
 import auction.Models.Bid;
 import auction.Models.Category;
 import auction.Models.Item;
 import auction.Models.User;
+import nl.fontys.util.Money;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import util.DatabaseCleaner;
 
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class AuctionMgrTest {
 
