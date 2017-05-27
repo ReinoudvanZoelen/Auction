@@ -64,7 +64,7 @@ public class User {
         return email;
     }
 
-    public int numberOfOfferdItems(){
+    public int numberOfOfferdItems() {
         return this.offeredItems.size();
     }
 

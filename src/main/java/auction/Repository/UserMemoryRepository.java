@@ -1,10 +1,11 @@
 package auction.Repository;
 
 import auction.Models.User;
+
+import javax.persistence.EntityExistsException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import javax.persistence.EntityExistsException;
 
 public class UserMemoryRepository implements UserRepository {
 
@@ -21,7 +22,7 @@ public class UserMemoryRepository implements UserRepository {
 
     @Override
     public void create(User user) {
-         if (findByEmail(user.getEmail()) != null) {
+        if (findByEmail(user.getEmail()) != null) {
             throw new EntityExistsException();
         }
         users.put(user.getEmail(), user);

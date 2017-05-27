@@ -1,7 +1,6 @@
 package auction.Repository;
 
 import auction.Models.Bid;
-import auction.Models.Item;
 
 import javax.persistence.EntityManager;
 import java.util.List;

@@ -4,7 +4,6 @@ import auction.Models.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import java.io.Console;
 import java.util.List;
 
 public class UserJPARepository implements UserRepository {

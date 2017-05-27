@@ -3,7 +3,7 @@ package auction.Models;
 import javax.persistence.Entity;
 
 @Entity
-public class Furniture extends Item{
+public class Furniture extends Item {
 
     private String material;
 

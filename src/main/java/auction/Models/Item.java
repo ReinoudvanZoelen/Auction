@@ -15,6 +15,7 @@ import java.util.Objects;
         @NamedQuery(name = "Item.FindByDescription",
                 query = "select i from Item as i where i.description = :inputdescription"),})
 @Entity
+@MappedSuperclass
 public class Item implements Comparable {
 
     @Id
@@ -52,7 +53,6 @@ public class Item implements Comparable {
         buyer.addItem(this);
         return highest;
     }
-
 
 
     public int compareTo(Object arg0) {

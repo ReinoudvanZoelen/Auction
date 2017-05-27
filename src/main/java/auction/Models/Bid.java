@@ -1,7 +1,6 @@
 package auction.Models;
 
 import com.sun.istack.internal.NotNull;
-import javafx.beans.DefaultProperty;
 import nl.fontys.util.FontysTime;
 import nl.fontys.util.Money;
 
@@ -55,7 +54,8 @@ public class Bid {
         this.amount = amount;
     }
 
-    public Item getItem() { return item;
+    public Item getItem() {
+        return item;
     }
 
     public void setItem(Item item) {
