@@ -1,5 +1,6 @@
 package auction.Models;
 
+import com.sun.istack.internal.NotNull;
 import nl.fontys.util.Money;
 
 import javax.persistence.*;
@@ -121,5 +122,7 @@ public class Item implements Comparable {
     public Bid getHighestBid() {
         return highest;
     }
+
+
 
 }

@@ -22,7 +22,7 @@
             <property name="javax.persistence.jdbc.user" value="RMTS"/>
             <property name="javax.persistence.jdbc.password" value="Habibke"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
             <property name="eclipselink.logging.logger" value="DefaultLogger"/>
             <property name="eclipselink.logging.level" value="FINE"/>
         </properties>

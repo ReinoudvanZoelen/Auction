@@ -56,11 +56,16 @@ public class AuctionMgr {
     public Bid newBid(Item item, User buyer, Money amount) {
         Bid bid = item.newBid(buyer, amount);
 
+        bid.setItem(item);
+
         if (bid != null) {
-            item.setHighest(bid);
-            return item.getHighestBid();
+            if(bid.getAmount().getCents() > item.getHighestBid().getAmount().getCents()){
+                item.setHighest(bid);
+                return item.getHighestBid();
+            }
+            return bid;
         }
 
-        return null;
+        return bid;
     }
 }

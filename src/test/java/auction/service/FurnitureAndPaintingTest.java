@@ -73,6 +73,7 @@ public class FurnitureAndPaintingTest {
 
         Item foundFurniture = auctionMgr.getItem(furniture1.getId());
         int i = 3;
+        // expected, actual
         assertEquals(foundFurniture.getHighestBid(), bid);
         assertTrue(foundFurniture.getClass() == Furniture.class);
     }
