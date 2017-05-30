@@ -16,7 +16,7 @@ public class Bid {
     private FontysTime time;
     @ManyToOne(targetEntity = User.class)
     private User buyer;
-    @OneToOne(targetEntity = Money.class)
+    @OneToOne(targetEntity = Money.class, cascade = CascadeType.PERSIST)
     private Money amount;
     @OneToOne(targetEntity = Item.class)
     @NotNull

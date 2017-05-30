@@ -59,13 +59,17 @@ public class AuctionMgr {
         bid.setItem(item);
 
         if (bid != null) {
-            if(bid.getAmount().getCents() > item.getHighestBid().getAmount().getCents()){
+            if(item.getHighestBid() != null){
+                if(bid.getAmount().getCents() > item.getHighestBid().getAmount().getCents()){
+                    item.setHighest(bid);
+                }
+            } else {
                 item.setHighest(bid);
-                return item.getHighestBid();
             }
-            return bid;
         }
 
-        return bid;
+        this.ItemRepository.edit(item);
+
+        return item.getHighestBid();
     }
 }

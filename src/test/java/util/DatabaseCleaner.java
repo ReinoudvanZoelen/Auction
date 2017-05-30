@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class DatabaseCleaner {
 
     private static final Class<?>[] ENTITY_TYPES = {
-            FontysTime.class, Money.class, Item.class, Bid.class, Category.class, User.class
+            FontysTime.class, Bid.class, Item.class,  Money.class, Category.class, User.class
     };
     private final EntityManager em;
 
