@@ -23,9 +23,9 @@ public class SellerMgr {
      * en met de beschrijving description
      */
     public Item offerItem(User seller, Category cat, String description) {
-        Item item = new Item(seller, cat, description);
-        this.ItemRepository.create(item);
-        return item;
+//        Item item = new Item(seller, cat, description);
+//        this.ItemRepository.create(item);
+        return null;
     }
 
     /**

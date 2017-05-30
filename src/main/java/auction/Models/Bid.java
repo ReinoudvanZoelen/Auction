@@ -5,6 +5,7 @@ import nl.fontys.util.FontysTime;
 import nl.fontys.util.Money;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Bid {
